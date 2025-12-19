@@ -9,20 +9,6 @@
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 */
-:root.theme-light {
-  --border-color: #000;
-  --bg-color: #d3d3d3;
-  --linear-gradient-first: #e7e7e7;
-  --linear-gradient-second: #1a1a1a;
-  --accent-color: #000;
-  --mix-blend-color: #fff;
-  --border-color: #000;
-  --stroke-color: #fff;
-  --header-weight: 700;
-  --text-weight: 400;
-}
-
-
 
 @supports (-webkit-text-stroke: 1px #fff) or (text-stroke: 1px #fff) {
   .card__image-label {
@@ -31,26 +17,12 @@
     text-shadow: none;
   }
 }
-:root {
-  --border-color: #000;
-  --bg-color: #FFFFFF;
-  --linear-gradient-first: #e7e7e7;
-  --linear-gradient-second: #1a1a1a;
-  --accent-color: #000;
-  --mix-blend-color: #fff;
-  --border-color: #000;
-  --stroke-color: #fff;
-  --header-weight: 700;
-  --text-weight: 400;
-  --section-width: clamp(320px, 90vw, 696px);
-}
-
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
 
   font-family: var(--main-font), sans-serif;
-  font-variation-settings: 'wght' 400;
+  font-variation-settings: 'wght' var(--text-weight);
 
   background-image: repeating-linear-gradient(
       to bottom,
@@ -96,15 +68,20 @@
   inline-size: var(--section-width);
 }
 
-.theme-menu__item {
-  margin-block-end: 9px;
-}
-
 .header__title {
   color: var(--accent-color);
   font-family: var(--accent-font), sans-serif;
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   text-decoration: none;
+}
+
+.header__title:hover {
+  opacity: 0.7;
+}
+
+.header__title:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 4px;
 }
 
 .header__description {
@@ -341,21 +318,6 @@
   width: 0;
 }
 
-.theme-menu__button {
-  font-family: var(--accent-font), sans-serif;
-  border: none;
-  line-height: normal;
-  font-style: normal;
-  font-size: 14px;
-  font-weight: 400;
-  text-transform: uppercase;
-  background-color: transparent;
-  cursor: pointer;
-  padding-inline-start: 27px;
-}
-
-.theme-menu__button:focus-visible,
-.theme-menu__button:focus,
 .button-save:focus,
 .button-save:focus-visible {
   outline: none;
@@ -366,7 +328,7 @@
 }
 
 .dialog {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   gap: 30px;
@@ -383,8 +345,8 @@
   line-height: 150%;
 }
 
-.dialog:not([open]) {
-  display: none;
+.dialog[open] {
+  display: flex;
 }
 
 .dialog__flex {
